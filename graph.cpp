@@ -107,17 +107,19 @@ int Graph::insert_edge(string current_vertex, string to_attach)
 
 // @DEV
 // Args -> None 
-// Returns ->     if the strings passed are not found
+// Returns -> number of intersections displayed 
 int Graph::display_all()
 {
   if (!adjacency_list)
     return FAIL;
+  int count = 0;
   for (int i = 0; i < list_size; i++)
   { 
     cout << "VERTEX " << i+1 << " ==================" << endl;
     if (adjacency_list[i].intersection)
     {
       adjacency_list[i].intersection->display();
+      count++;
       cout << endl;
       if (adjacency_list[i].head)
       {
@@ -125,16 +127,21 @@ int Graph::display_all()
         while (temp)
         {
           temp->adjacent->intersection->display();
+          count++;
           cout << endl;
           temp = temp->next;
         }
       }
     }
   }
-  return 0;
+  return count;
 }
 
 
+// @DEV
+// Args -> String used to determine what intersection we will be displaying all adjacent
+// nodes for. 
+// Returns -> number of adjacent intersections 
 int Graph::display_adjacent(string key)
 {
   if (!adjacency_list)
@@ -162,6 +169,10 @@ int Graph::display_adjacent(string key)
 }
 
 
+// @DEV
+// Args -> String used to determine what intersection to search for in the array
+// Returns -> integer index if a match is found
+//            FAIL if match is not found -> FAIL = 3333
 int Graph::find_index(string key)
 {
   if (!adjacency_list)
