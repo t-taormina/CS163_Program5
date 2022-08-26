@@ -51,11 +51,16 @@ int Graph::insert_edge(string current_vertex, string to_attach)
   int attach_index = find_index(to_attach);
   if (vertex_index >= list_size || attach_index >=list_size)
     return FAIL;
+  /*
   node* temp = adjacency_list[vertex_index].head;
-  while(temp->adjacent)
+  while(temp)
     temp = temp->next;
-  temp = new node;
+    */
+  node* temp = new node;
   temp->adjacent = &adjacency_list[attach_index];
+  temp->next = adjacency_list[vertex_index].head;
+  adjacency_list[vertex_index].head = temp;
+  //temp->adjacent->intersection->display();
   return vertex_index;
 }
 
@@ -69,15 +74,16 @@ int Graph::display_all()
     if (adjacency_list[i].intersection)
     {
       adjacency_list[i].intersection->display();
+      cout << endl;
       if (adjacency_list[i].head)
       {
         node* temp = adjacency_list[i].head;
-        while (temp->next)
+        while (temp)
         {
           temp->adjacent->intersection->display();
+          cout << endl;
           temp = temp->next;
         }
-        temp->adjacent->intersection->display();
       }
     }
   }
@@ -86,18 +92,32 @@ int Graph::display_all()
 
 int Graph::display_adjacent(string key)
 {
+  if (!adjacency_list)
+    return FAIL;
+  int index = find_index(key);
+  if (index >= list_size)
+    return FAIL;
+  node* temp = adjacency_list[index].head;
+  int count = 0;
+  adjacency_list[index].intersection->display();
+  while (temp)
+  {
+    temp->adjacent->intersection->display();
+    count++;
+    temp = temp->next;
+  }
+  return count;
 }
 
 int Graph::find_index(string key)
 {
-  int success = FAIL;
   if (!adjacency_list)
-    return success;
+    return FAIL;
   for (int i = 0; i < list_size; i++)
   {
     if (adjacency_list[i].intersection->is_match(key))
-      success = i;
+      return i;
   }
-  return success;
+  return FAIL;
 }
 

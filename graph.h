@@ -5,13 +5,6 @@
 
 #include "option.h"
 
-enum direction {
-  NORTH = 0, 
-  EAST = 1, 
-  SOUTH = 2,
-  WEST = 3
-};
-
 struct vertex
 {
   Intersection* intersection;
@@ -22,7 +15,6 @@ struct vertex
 struct node
 {
   vertex* adjacent;
-  direction cardinal_direction;
   node* next;
 };
 

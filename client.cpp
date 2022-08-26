@@ -90,6 +90,10 @@ void processChoice (int& flag, int menu_choice, Graph& graph)
       // Display adjacent
       case 4: 
         {
+          string input;
+          cout << "Enter the name of the vertex to display edges for: ";
+          get_input(input);
+          int index = graph.display_adjacent(input);
           break;
         }
 
