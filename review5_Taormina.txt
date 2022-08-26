@@ -1,0 +1,62 @@
+Efficiency Review Write-up
+Tyler Taormina
+Program 5
+August 26th, 2022
+==============================================
+
+  The goal of Program number 5 was to create a graph abstraction using an adjacency list.
+In this case, the adjacency list was made up of an array of vertices where each element
+has a vertex and a head pointer to a linear linked list. The linear linked list represents
+edges or adjacent vertices. Functions that were implemented for the data structure
+included displaying all vertices (to include the edge list for each index if applicable),
+creating an adjacency list, deallocating an adjacency list, inserting a new vertex into the 
+graph, and inserting a connection between two existing vertices. This program was intended
+to be an experience in creating our own adjacency list. With this in mind, there are
+certain functions that would be ideal for a use case such as the one described in the
+program 5 description, but these functions are left out. 
+
+  To accomplish the tasks required of program 5, I implemented two classes and two
+structures. The base class I implemented is the intersection class. This class contains
+three private data members that are intended to represent the "name" of an
+intersection and the names of the two cross-streets that make up the intersection. Methods
+for this class include a constructor, destructor, a copy function, a match function, and
+a display function. This class contains little to no algorithms and its logic is straight
+forward. Strings are used instead of character arrays which makes destruction and general 
+usage much simpler. With strings, we get dynamic flexibility with out having to worry
+about deallocation. This reduces risk for potential memory leaks and makes assignment
+a simpler process. I opted to reduce my strings to empty strings prior to going out of 
+scope but I am fairly confident that this does nothing beneficial for my program. 
+
+   The second class that I implemented was the graph class. To understand the graph class
+it is important to understand the structures that the graph class makes use of. The first
+structure is the vertex structure. This struct is made up of a pointer to an intersection
+object and a pointer to a node object. This brings up the node struct which consists of a 
+pointer to a vertex and a pointer to another node object. Now, the graph class contains an
+array of vertices (vertex objects). Each of these vertex objects contains a head node
+which points to a linear linked list. This linear linked list is used to contain
+information that represents relationships between intersections. If I had more time,
+I would like to use these edge connections to contain more data thus making the graph
+a weighted graph. The extra data could be used to provide a more informative experience to
+the user. For the functions that the graph class includes, see the first paragraph. 
+  
+  For this given application, I believe that the data structure performed well. From my
+rough thinking about whether or not something similar could be done with a binary tree
+or array, I don't think it would preform better than a graph. That and I think the graph
+is much more intuitive and would provide a better experience for a programmer who is
+maintaining the project throughout its lifetime. 
+
+  One thing that find efficient about my program is the insertion of vertices. It is
+a simple loop that looks for the next avaible space in the adjacency list. If there is
+space, the intersection object that is passed as an argument to the function is copied
+into array after allocating a new instance of an intersection. If there is not space,
+a integer is returned to indicate a failure. The decision on what to do with the failure
+is left to the client application programmer. 
+  
+  One thing that I think is inefficient is my insert edge function. While in theory it
+sounded simple, I could not write it in a clear and concise way. The issue I was running
+into was delinking my linear linked list. After considering the problem for some time,
+I could not see where I was losing my next pointer. So the function I have now uses
+if/else statements to achieve a working program. The if portion controls the case where
+there is no data in the head node, and the else statement controls the cases where there
+is data in the head node.  
+

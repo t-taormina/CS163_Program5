@@ -3,6 +3,12 @@
 // August 2022
 // Program 5
 
+// Client class - this file contains the implementations for a potential client program.
+// It is meant to be used as a means to test the Abstract data type. A menu interface is
+// provided to the user. They can add objects to the graph and specifiy which objects have
+// connections to others and then display the current state of the data structure to the
+// console and thereby verify that the program is functioning as intended. 
+
 #include "client.h"
 
 
