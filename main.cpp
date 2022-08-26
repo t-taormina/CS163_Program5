@@ -5,6 +5,9 @@
 
 // GITHUB : https://github.com/till-t/CS163-Program4.git
 
+// Main program driver. Calls run function from client program and allows grader to test
+// the program. 
+
 #include "client.h"
 
 int main()

@@ -83,7 +83,14 @@ void processChoice (int& flag, int menu_choice, Graph& graph)
           cout << "Enter the name of the landmark the you would like to attach to your previous entry: ";
           get_input(input2);
           int index = graph.insert_edge(input1, input2);
-          cout << "Edge added at index: " << index << endl;
+          int index2 = graph.insert_edge(input2, input1);
+          if (index == FAIL || index2 == FAIL)
+          {
+            cout << endl;
+            cout << "ERROR" << endl;
+            cout << "Either the adjacency list is empty or one of your entries is not in the list." << endl;
+          } else
+            cout << "Edge added at indexes: " << index << " & " << index2 << endl;
           break;
         }
 
@@ -93,7 +100,15 @@ void processChoice (int& flag, int menu_choice, Graph& graph)
           string input;
           cout << "Enter the name of the vertex to display edges for: ";
           get_input(input);
-          int index = graph.display_adjacent(input);
+          int count = graph.display_adjacent(input);
+          if (count == FAIL)
+          {
+            cout << endl;
+            cout << "ERROR" << endl;
+            cout << "Either the adjacency list is empty or the item your looking for is not in the list." << endl;
+          }
+          else
+            cout << "Number of adjacent intersections: " << count << endl;;
           break;
         }
 
