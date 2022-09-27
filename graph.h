@@ -67,3 +67,4 @@ class Graph
     vertex * adjacency_list;
     int list_size;
 };
+

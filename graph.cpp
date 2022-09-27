@@ -1,9 +1,7 @@
-// Tyler Taormina
+// Tyler Taormina 
 // taormina@pdx.edu
-// August 2022
+// August 2023
 // Program 5
-
-// GITHUB : https://github.com/till-t/CS163-Program5.git
 
 // Graph class- The graph class is designed to provide access to directions by linking
 // intersections (see intersection.h) that the user inputs. The graph data structure is

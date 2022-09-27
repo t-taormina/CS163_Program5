@@ -58,5 +58,6 @@ into was delinking my linear linked list. After considering the problem for some
 I could not see where I was losing my next pointer. So the function I have now uses
 if/else statements to achieve a working program. The if portion controls the case where
 there is no data in the head node, and the else statement controls the cases where there
-is data in the head node.  
+is data in the head node. Although this function works, I do think it could be written
+better and if given more time I would go back and try to reimplement this. 
 

@@ -18,4 +18,3 @@ void processChoice (int& flag, int menu_choice, class Graph& graph);
 int get_input(string& input);
 int make_intersection(Intersection& intersection);
 
-
